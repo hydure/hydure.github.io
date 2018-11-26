@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Other on Code &#43; Pentesting</title>
+    <link>http://colinlightfoot.com/tags/other/</link>
+    <description>Recent content in Other on Code &#43; Pentesting</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 25 Nov 2018 20:06:08 -0500</lastBuildDate>
+    
+	<atom:link href="http://colinlightfoot.com/tags/other/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Hello</title>
+      <link>http://colinlightfoot.com/blog/2018-11-25-hello/</link>
+      <pubDate>Sun, 25 Nov 2018 20:06:08 -0500</pubDate>
+      
+      <guid>http://colinlightfoot.com/blog/2018-11-25-hello/</guid>
+      <description>My name is Colin Lightfoot and I am a software developer and an aspiring pentester. This blog is mainly going to contain news regarding current coding projects I am working on as well as some CTF challenge writeups I&amp;rsquo;ll attempt in my spare time. I hope you enjoy reading this journey of mine.</description>
+    </item>
+    
+  </channel>
+</rss>
