@@ -21,11 +21,11 @@
     </item>
     
     <item>
-      <title>Hello</title>
-      <link>http://colinlightfoot.com/blog/2018-11-25-hello/</link>
+      <title>Hello World</title>
+      <link>http://colinlightfoot.com/blog/2018-11-25-hello-world/</link>
       <pubDate>Sun, 25 Nov 2018 20:06:08 -0500</pubDate>
       
-      <guid>http://colinlightfoot.com/blog/2018-11-25-hello/</guid>
+      <guid>http://colinlightfoot.com/blog/2018-11-25-hello-world/</guid>
       <description>My name is Colin Lightfoot and I am a software developer and an aspiring pentester. This blog is mainly going to contain news regarding current coding projects I am working on as well as some CTF challenge writeups I&amp;rsquo;ll attempt in my spare time. I hope you enjoy reading this journey of mine.</description>
     </item>
     
