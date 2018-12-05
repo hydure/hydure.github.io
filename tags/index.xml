@@ -6,10 +6,19 @@
     <description>Recent content in Tags on Code &#43; Pentesting</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 25 Nov 2018 20:06:08 -0500</lastBuildDate>
+    <lastBuildDate>Wed, 05 Dec 2018 12:40:08 -0500</lastBuildDate>
     
 	<atom:link href="http://colinlightfoot.com/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Cloud Security</title>
+      <link>http://colinlightfoot.com/tags/cloud-security/</link>
+      <pubDate>Wed, 05 Dec 2018 12:40:08 -0500</pubDate>
+      
+      <guid>http://colinlightfoot.com/tags/cloud-security/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Other</title>

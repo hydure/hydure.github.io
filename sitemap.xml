@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://colinlightfoot.com/blog/2018-12-05-cloud-security-report/</loc>
+    <lastmod>2018-12-05T12:40:08-05:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://colinlightfoot.com/blog/2018-11-25-hello/</loc>
     <lastmod>2018-11-25T20:06:08-05:00</lastmod>
   </url>
@@ -24,8 +29,14 @@
   </url>
   
   <url>
+    <loc>http://colinlightfoot.com/tags/cloud-security/</loc>
+    <lastmod>2018-12-05T12:40:08-05:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://colinlightfoot.com/</loc>
-    <lastmod>2018-11-25T20:06:08-05:00</lastmod>
+    <lastmod>2018-12-05T12:40:08-05:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -42,13 +53,19 @@
   
   <url>
     <loc>http://colinlightfoot.com/post/</loc>
-    <lastmod>2018-11-25T20:06:08-05:00</lastmod>
+    <lastmod>2018-12-05T12:40:08-05:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://colinlightfoot.com/categories/research/</loc>
+    <lastmod>2018-12-05T12:40:08-05:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://colinlightfoot.com/tags/</loc>
-    <lastmod>2018-11-25T20:06:08-05:00</lastmod>
+    <lastmod>2018-12-05T12:40:08-05:00</lastmod>
     <priority>0</priority>
   </url>
   
