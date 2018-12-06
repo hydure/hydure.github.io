@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1">
+
+  
+    
+    
+      <link href="/css/fonts.css" rel="stylesheet" type="text/css">
+    
+  
+
+  
+  <title>Bandit Part 1</title>
+
+  
+  
+  <link rel="stylesheet" href="/css/hugo-octopress.css">
+
+  
+  
+
+  
+    <link rel="stylesheet" href="/css/fork-awesome.min.css">
+  
+
+  
+  <link href="http://colinlightfoot.com/favicon.png" rel="icon">
+
+  
+  
+
+  <meta name="description" content="Colin Lightfoot&#39;s technical blog. I&#39;m sure he&#39;s up to something...">
+  <meta name="keywords" content="[Code Pentesting Interesting Research Other]">
+  <meta name="author" content="Colin Lightfoot">
+
+  
+  <meta name="generator" content="Hugo 0.51" />
+
+  
+  
+
+  
+  
+</head>
+<body>
+
+
+<header role="banner">
+<hgroup>
+  
+  <h1><a href="http://colinlightfoot.com/">Code &#43; Pentesting</a></h1>
+    <h2>Showing off the cool things I study.</h2>
+</hgroup></header>
+
+
+<nav role="navigation">
+<fieldset class="mobile-nav">
+  
+  <select onchange="location = this.value;">
+    <option value="">Navigate…</option>
+      
+        <option value="http://colinlightfoot.com/">» Blog</option>
+      
+        <option value="http://colinlightfoot.com/archive/">» Archive</option>
+      
+  </select>
+</fieldset>
+
+
+<ul class="main-navigation">
+  
+  
+    
+      <li><a href="http://colinlightfoot.com/" title="Blog">Blog</a></li>
+    
+  
+    
+      <li><a href="http://colinlightfoot.com/archive/" title="Archive"  target="_blank" >Archive</a></li>
+    
+  
+</ul>
+
+<ul class="subscription">
+  
+</ul>
+
+
+</nav>
+
+
+<div id="main">
+  <div id="content">
+    <div>
+      <article class="hentry" role="article">
+
+        
+        
+
+<header>
+  <p class="meta">Dec 5, 2018
+     - 6 minute read 
+     - <a href="http://colinlightfoot.com/blog/2018-12-05-bandit-part-1/#disqus_thread">Comments</a>
+
+    
+    
+      - <a class="label" href="http://colinlightfoot.com/categories/pentesting/">Pentesting </a>
+    
+  </p>
+  <h1 class="entry-title">
+     Bandit Part 1 
+  </h1>
+</header>
+
+
+        <div class="entry-content">
+          
+          
+          
+          <p>My attempt at solving all 34 levels of the wargame <a href="http://overthewire.org/wargames/bandit/" target="_blank">Bandit</a>.</p>
+
+<p>Bandit is a wargame hosted by overthewire.org and is aimed at absolute beginners, which I am. Below are the write-ups for each level I solved.</p>
+
+<p>Beginning:</p>
+
+<p>We start at level 0, which is simply logging onto the game using SSH to connect to <code>bandit.labs.overthewire.org</code> on port <code>2220</code> with the username <code>bandit0</code> and the password <code>bandit0</code>.</p>
+
+<p>Typing <code>ssh</code> into the command line showed us the optional flags and the required argument, <code>destination</code>:</p>
+
+<pre><code>ssh [-46AaCfGgKkMNnqsTtVvXxYy] [-B bind_interface]
+    [-b bind_address] [-c cipher_spec] [-D [bind_address:]port]
+    [-E log_file] [-e escape_char] [-F configfile] [-I pkcs11]
+    [-i identity_file] [-J [user@]host[:port]] [-L address]
+    [-l login_name] [-m mac_spec] [-O ctl_cmd] [-o option] [-p port]
+    [-Q query_option] [-R address] [-S ctl_path] [-W host:port]
+    [-w local_tun[:remote_tun]] destination [command]`
+</code></pre>
+
+<p>We know that we have the <code>user</code>name, the <code>host</code> address and the <code>port</code> number, so we type the following line in my terminal:
+<code>ssh -p 2220 bandit0@bandit.labs.overthewire.org</code>.</p>
+
+<p>It asks us for the password, and I&rsquo;m in:</p>
+
+<pre><code>    ,----..            ,----,          .---. 
+   /   /   \         ,/   .`|         /. ./|
+  /   .     :      ,`   .'  :     .--'.  ' ;
+ .   /   ;.  \   ;    ;     /    /__./ \ : |
+.   ;   /  ` ; .'___,/    ,' .--'.  '   \' .
+;   |  ; \ ; | |    :     | /___/ \ |    ' ' 
+|   :  | ; | ' ;    |.';  ; ;   \  \;      : 
+.   |  ' ' ' : `----'  |  |  \   ;  `      |
+'   ;  \; /  |     '   :  ;   .   \    .\  ; 
+ \   \  ',  /      |   |  '    \   \   ' \ |
+  ;   :    /       '   :  |     :   '  |--&quot;  
+   \   \ .'        ;   |.'       \   \ ;     
+www. `---` ver     '---' he       '---&quot; ire.org     
+
+Welcome to OverTheWire!
+</code></pre>
+
+<p>Level 0:</p>
+
+<p>We need to find a file called <code>readme</code> in the home directory of level 0 in order to find the password to get to level 1. Simply typing <code>ls</code> shows us all the files and directories in the current directory, showing us there is indeed a <code>readme</code> file in the home directory. We type <code>cat readme</code> to read the file which only contained the password to get to level 1!</p>
+
+<p>We type <code>ssh -p 2220 bandit1@bandit.labs.overthewire.org</code>, enter the password we found in the <code>readme</code> file, and&hellip;we&rsquo;re in!</p>
+
+<p>For future reference, unless otherwise specified, we will be typing <code>ssh -p 2220 banditX@bandit.labs.overthewire.org</code>, where <code>X</code> is the next level, in order to connect to the next level and enter the password we found in the current level.</p>
+
+<p>Level 1:</p>
+
+<p>The password to get to the next level is stored in the file <code>-</code> located in the home directory. Simply typing <code>cat -</code> does not work, as hyphens designate that an flag/option/argument is going to be entered.</p>
+
+<p>For example, <code>-p 2220</code> is a flag for the SSH commands I used to log into each level. Note that each command&rsquo;s flags are different: <code>-p</code> does not always denote the user is entering a port number when used in other commands.</p>
+
+<p>Therefore, we need to precede the hyphen with a <code>./</code> to denote that the hyphen is being read as the name for a file in the home directory, denoted as <code>.</code> in linux operating systems,  and not as the beginning of a flag for the <code>cat</code> command:</p>
+
+<p>We type <code>cat ./-</code> and receive the password for level 2!</p>
+
+<p>Level 2:</p>
+
+<p>The password for the next level is stored in a file called <code>spaces in this filename</code> located in the home directory. Unforunately, typing the file name verbatim will make the <code>cat</code> command believe each word in the file name is its own argument. Typing a space as <code>\</code> will tell the terminal that you want the space ASCII character to be used so the terminal does not think you are entering another argument.</p>
+
+<p>Following what we know above, typing <code>cat spaces\ in\ this\ filename</code> allows us to view the password stored in the file. Onto level 3!</p>
+
+<p>Level 3:</p>
+
+<p>The password for the next level is in the <code>inhere</code> directory, but when we change to the <code>inhere</code> directory by typing <code>cd inhere</code> and then type <code>ls</code> to list the contents of the directory no files are present.</p>
+
+<p>Looking at the <code>man</code> page of the <code>ls</code> command, we can see that there is a flag <code>-a, --all</code> that allows us to see entries in the directory that start with <code>.</code>, otherwise known as hidden entries.</p>
+
+<p>After typing <code>ls -a</code>, we see that there is a <code>.hidden</code> file. We <code>cat</code> the file and find the password to log onto level 4!</p>
+
+<p>Level 4:</p>
+
+<p>The password for the next level is stored in the only human-readable file in this level&rsquo;s <code>inhere</code> directory which is also found in the home directory. The <code>inhere</code> directory contains ten files labeled <code>-file00</code> through  <code>-file09</code>.</p>
+
+<p>Human-readable most likely means the file has only ASCII characters as its contents. The <code>file</code> command determines the file type of the file selected, and there is also a wildcard character <code>*</code> that runs a command through all of the files that match the naming scheme of the letters prepended to <code>*</code>. For example, <code>file ./hello*</code> will run the <code>file</code> command on all files that begin with <code>hello</code> such as <code>hello1.jpg</code> and <code>helloworld.txt</code>.</p>
+
+<p>Knowing this, we run the command <code>file ./*</code> and are given the output:</p>
+
+<pre><code>./-file00: data
+./-file01: data
+./-file02: data
+./-file03: data
+./-file04: data
+./-file05: data
+./-file06: data
+./-file07: ASCII text
+./-file08: data
+./-file09: data
+</code></pre>
+
+<p>We <code>cat ./-file07</code> and get the password for level 5!</p>
+
+<p>Level 5:</p>
+
+<p>The file we want to find is also in a <code>inhere</code> directory and is human-readable, 1033 bytes in size and is not executable. The website suggests that we use the <code>find</code> command to find the correct file. Look at the <code>find</code> command&rsquo;s <code>man</code> page by typing <code>man find</code>, we can find files that are <code>-readable</code>, files of a certain <code>-size</code> in bytes (<code>-size Xc</code>, where <code>X</code> is a number), and files that are <code>-executable</code>. We should also note that adding an exclamation mark before any flag is adding a <code>not</code> to the logic statement, i.e. <code>! -executable</code> means that we are searching for a file that is not executable.</p>
+
+<p>Putting this all together, we can use the following command to find the file we are looking for: <code>find -readable -size 1033c ! -executable</code> and we get only one file that matches these criteria <code>./maybehere07/.file2</code>. We open up that file to get the password for level 6!</p>
+
+<p>That&rsquo;s all I&rsquo;ve done for now, but I will be posting more level write-ups later.</p>
+        </div>
+        
+
+<footer>
+  <p class="meta">
+    <span class="byline author vcard">Posted by <span class="fn">Colin Lightfoot</span></span>
+    
+    <time>Dec 5, 2018</time>
+    
+      <span class="categories">
+        Tags:
+        
+          <a class="category" href="http://colinlightfoot.com/tags/overthewire">OverTheWire</a>  
+    
+    </span>
+  </p>
+
+  
+
+  <p class="meta">
+    
+        <a class="basic-alignment left" href="http://colinlightfoot.com/blog/2018-12-05-cloud-security-report/" title="Cloud Security Report">Cloud Security Report</a>
+    
+
+    
+  </p>
+  
+    
+  
+</footer>
+
+      </article>
+    </div>
+    
+
+<aside class="sidebar thirds">
+  <section class="first odd">
+
+    
+      <h1>About Me</h1>
+    
+
+    <p>
+      
+        I am a full-time scientist by day, graduate student by night learning what I can about
+  software development and pentesting. </br>Sometimes I study for certifications, other times I attempt a
+  new project or try to solve a CTF challenge. </br>Whatever I do, though, I&rsquo;ll try my best to share
+  it with you.
+      
+    </p>
+  </section>
+
+
+
+  
+  <ul class="sidebar-nav">
+    <li class="sidebar-nav-item">
+      <a target="_blank" href="https://github.com/hydure/" title="https://github.com/hydure/"><i class="fa fa-github fa-3x"></i></a>
+      
+      
+      <a target="_blank" href="https://twitter.com/hydure/" title="https://twitter.com/hydure/"><i class="fa fa-twitter fa-3x"></i></a>
+      
+         
+      
+      <a target="_blank" href="https://www.linkedin.com/in/colinflightfoot/" title="https://www.linkedin.com/in/colinflightfoot/"><i class="fa fa-linkedin fa-3x"></i></a>
+      <a target="_blank" href="https://stackoverflow.com/users/8271155/c-lightfoot" title="https://stackoverflow.com/users/8271155/c-lightfoot"><i class="fa fa-stack-overflow fa-3x"></i></a>
+      
+      <a target="_blank" href="https://www.facebook.com/colin.lightfoot.9" title="https://www.facebook.com/colin.lightfoot.9"><i class="fa fa-facebook fa-3x"></i></a>
+      
+      
+      
+
+    
+    
+    </li>
+  </ul>
+
+  
+
+  
+
+  
+  
+  
+    
+      <section class="even">
+        <h1>Recent Posts</h1>
+        <ul id="recent_posts">
+          
+          
+            
+              <li class="post">
+                <a href="/blog/2018-12-05-bandit-part-1/">Bandit Part 1</a>
+              </li>
+            
+          
+            
+              <li class="post">
+                <a href="/blog/2018-12-05-cloud-security-report/">Cloud Security Report</a>
+              </li>
+            
+          
+            
+              <li class="post">
+                <a href="/blog/2018-11-25-hello-world/">Hello World</a>
+              </li>
+            
+          
+            
+          
+        </ul>
+      </section>
+    
+  
+</aside>
+
+  </div>
+</div>
+
+    <footer role="contentinfo">
+      <p>Copyright &copy; 2018 Colin Lightfoot - <a href="http://colinlightfoot.com/license/">License</a> -
+        <span class="credit">Powered by <a target="_blank" href="https://gohugo.io">Hugo</a> and <a target="_blank" href="https://github.com/parsiya/hugo-octopress/">Hugo-Octopress</a> theme.
+      </p>
+    </footer>
+
+    
+    
+    
+
+    
+  </body>
+</html>
+
