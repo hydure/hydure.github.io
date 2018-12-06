@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1">
+
+  
+    
+    
+      <link href="/css/fonts.css" rel="stylesheet" type="text/css">
+    
+  
+
+  
+  <title>Bandit Part 2</title>
+
+  
+  
+  <link rel="stylesheet" href="/css/hugo-octopress.css">
+
+  
+  
+
+  
+    <link rel="stylesheet" href="/css/fork-awesome.min.css">
+  
+
+  
+  <link href="http://colinlightfoot.com/favicon.png" rel="icon">
+
+  
+  
+
+  <meta name="description" content="Colin Lightfoot&#39;s technical blog. I&#39;m sure he&#39;s up to something...">
+  <meta name="keywords" content="[Code Pentesting Interesting Research Other]">
+  <meta name="author" content="Colin Lightfoot">
+
+  
+  <meta name="generator" content="Hugo 0.51" />
+
+  
+  
+
+  
+  
+</head>
+<body>
+
+
+<header role="banner">
+<hgroup>
+  
+  <h1><a href="http://colinlightfoot.com/">Code &#43; Pentesting</a></h1>
+    <h2>Showing off the cool things I study.</h2>
+</hgroup></header>
+
+
+<nav role="navigation">
+<fieldset class="mobile-nav">
+  
+  <select onchange="location = this.value;">
+    <option value="">Navigate…</option>
+      
+        <option value="http://colinlightfoot.com/">» Blog</option>
+      
+        <option value="http://colinlightfoot.com/archive/">» Archive</option>
+      
+  </select>
+</fieldset>
+
+
+<ul class="main-navigation">
+  
+  
+    
+      <li><a href="http://colinlightfoot.com/" title="Blog">Blog</a></li>
+    
+  
+    
+      <li><a href="http://colinlightfoot.com/archive/" title="Archive"  target="_blank" >Archive</a></li>
+    
+  
+</ul>
+
+<ul class="subscription">
+  
+</ul>
+
+
+</nav>
+
+
+<div id="main">
+  <div id="content">
+    <div>
+      <article class="hentry" role="article">
+
+        
+        
+
+<header>
+  <p class="meta">Dec 6, 2018
+     - 9 minute read 
+     - <a href="http://colinlightfoot.com/blog/2018-12-06-bandit-part-2/#disqus_thread">Comments</a>
+
+    
+    
+      - <a class="label" href="http://colinlightfoot.com/categories/pentesting/">Pentesting </a>
+    
+  </p>
+  <h1 class="entry-title">
+     Bandit Part 2 
+  </h1>
+</header>
+
+
+        <div class="entry-content">
+          
+          
+          
+          <p>Part 2 of me solving the wargame <a href="http://overthewire.org/wargames/bandit/" target="_blank">Bandit</a>.</p>
+
+<p>We ended last time finding the password for level 6, so that&rsquo;s where we&rsquo;ll start.</p>
+
+<p>Level 6:</p>
+
+<p>The password file is stored <em>somewhere on the server</em> and is owned by <code>user</code> bandit7, owned by <code>group</code> bandit6 and is 33 bytes in <code>size</code>. After looking at the <code>find</code> command&rsquo;s <code>man</code> page again, it appears there are parameters to search by <code>-user</code> and <code>-group</code> as well as the <code>-size</code> flag that we made use of in the previous challenge.</p>
+
+<p>Putting what we know together, I tried typing in the command <code>find -user bandit7 -group bandit6 -size 33c</code> while in the directory we log into and did not find any results. Rereading the hint&rsquo;s <em>somewhere on the server</em>, I realized I would probably need to go to the root directory, or the direcotry on a UNIX system that is the parent directory to all directories and files in a UNIX file system.</p>
+
+<p>Typing in the command generated a lot of &lsquo;permission denied&rsquo; and &lsquo;no such file or directory&rsquo; errors. We recall from our undergraduate Systems Programming class that there are a number of errors a Linux system can call, with the two above errors being number error codes 13 and 2 respectively. We also know that each error then generates its own output stream and said output streams can be redirected to <code>/dev/null</code> where they are essentially discarded and removed from the output we see generated.</p>
+
+<p>Therefore, after running the command <code>find  -user bandit7 -group bandit6 -size 33c 2&gt;/dev/null 13&gt;/dev/null</code> we get a single result file, <code>./var/lib/dpkg/info/bandit7.password</code>. After running the <code>cat</code> command on it, we receive the password to level 7!</p>
+
+<p>Level 7:</p>
+
+<p>The password for level 8 is stored in the file <code>data.txt</code> next to the word <code>millionth</code>. This level suggests that we use the command <code>grep</code> which searches files for lines that have the given pattern in them. We also know that we can output a file with <code>cat</code>. But to get the output as input for <code>grep</code> we need to do what&rsquo;s called <em>piping</em>. Piping is feeding the output of one command to the input of another. Piping was initially used to run multiple programs in sequence due to the small amount of memory available in early computer models and is performed by typing the <code>|</code> symbol between two command calls.</p>
+
+<p>Putting all this together, we call <code>cat data.txt | grep millionth</code> to allow grep to search through data.txt without exhausting the server&rsquo;s memory and we find the line with the word <code>millionth</code> right next to the password for level 8!</p>
+
+<p>Level 8:</p>
+
+<p>The password for level 9 is stored in the file <code>data.txt</code> and is the only line of text that occurs only once. The website suggests we use the command <code>uniq</code> which either reports or omits all lines that are repeated throughout a file. We find a flag <code>-u</code> that only prints unique lines in the file. But, the <code>man</code> page for the <code>uniq</code> command notes that <code>uniq</code> does not detect repeated lines unless they are adjacent, so sorting the file first with the <code>sort</code> command is key.</p>
+
+<p>With what we know, I try <code>sort data.txt | uniq -u</code> and get the password for level 9!</p>
+
+<p>Level 9</p>
+
+<p>The password for level 10 is stored in the file <code>data.txt</code> and is one of the few human-readable strings beginning with serveral <code>=</code> characters. We try <code>cat</code>ing the file, but learn that you cannot because the file is not human-readable. The level recommends using the <code>strings</code> command, which prints the strings of printable characters in files. With this we can look at the human-readable strings within the file and then search them using <code>grep</code>.</p>
+
+<p>Putting it all together, we type <code>strings data.txt | grep &quot;==&quot;</code> and get the following output:</p>
+
+<pre><code>2========== the
+========== password
+========== isa
+========== &lt;password&gt;
+</code></pre>
+
+<p>Sweet, onto level 10.</p>
+
+<p>Level 10:</p>
+
+<p>The password for level 11 is stored in the file <code>data.txt</code>, which contains <code>base64</code> encoded data. The website suggests we use the <code>base64</code> command which has a decode <code>-d</code> flag to decode any data with <code>base64</code> encoding.</p>
+
+<p>Knowing these, we type <code>base64 -d data.txt</code> and receive the output:</p>
+
+<pre><code>The password is &lt;password&gt;
+</code></pre>
+
+<p>Onto level 11!</p>
+
+<p>Level 11:</p>
+
+<p>The password for level 12 is stored in the file <code>data.txt</code> where all lower- and uppercase letters have been rotated by 13 positions. The website suggests using the <code>tr</code> command. The <code>tr</code> command allows us to translate or delete characters from an input source and then write the results to the standard output.</p>
+
+<p>We read the Rot13 reading material and looked up how to use the command <code>tr</code> to solve Rot13-encrypted files and came up with <code>cat data.txt | tr '[a-zA-Z]' '[n-za-mN-ZA-M]'</code> to account for both upper- and lowercase characters and receive:</p>
+
+<pre><code>The password is &lt;password&gt;
+</code></pre>
+
+<p>Onto level 12!</p>
+
+<p>Level 12:</p>
+
+<p>The password for level 13 is stored in the file <code>data.txt</code>, which is a hexdump of a fiel that has been repeatedly compressed. We must create a directory in <code>/tmp</code> if we want to store files we decompress, as we are not allowed to in the home directory. This one looks like it&rsquo;s going to be a long one&hellip;challenged accepted.</p>
+
+<p>We start by making a directory in <code>/tmp</code> with the command <code>mkdir /tmp/goo</code> and copy the <code>data.txt</code> file over to it with <code>cp data.txt /tmp/goo</code>. We then change to the directory. We need to reverse the hexdump with the <code>xxd</code> command the website suggests we use. We see that the <code>xxd</code> command can reverse the hexdump by using its <code>-r</code> flag.</p>
+
+<p>After typing <code>xxd -r data.txt &gt; dumped</code> to output the reversed hexdump into the file <code>dumped</code> we then call <code>file dumped</code> to assess the file type of <code>dumped</code> and see that it holds data compressed by the <code>gzip</code> command.</p>
+
+<p>To uncompress a <code>gzip</code>-compressed file, the file must first have the <code>gzip</code> ending <code>.gz</code>. So we change <code>dumped</code>&rsquo;s file name to <code>dumped.gz</code> with the command <code>mv</code> that simply moves the file to the new name: <code>mv dumped dumped.gz</code>. Next we use the <code>gunzip</code> command to decompress the file: <code>gunzip dumped.gz</code> and receive <code>dumped</code>. Then we check <code>dumped</code>&rsquo;s file type and find out that the decompressed file is a compressed bzip2 archive with a block size of 900k.</p>
+
+<p>We can decompress a <code>bzip2</code>-compressed file by calling the <code>bzip2</code> command with the decompress <code>-d</code> flag. Typing <code>bzip2 dumped</code> gives us the file <code>dumped.out</code> that is a <code>gzip</code>-compressed archive. We change the name again to <code>dumped.gz</code> and decompress the file the same way we did before. The file decompresses to <code>dumped</code>, a <code>tar</code>-compressed archive&hellip;.argh!</p>
+
+<p>The <code>tar</code> command has a lot of decompression features, and the standard ones to use for decompression are the flags <code>-x</code>(untars/extract the files compressed in a tar archive), <code>-v</code> (verbosely shows the progress of untarring all the files by listing all of the decompressed file names in the output) and <code>-f</code> (tells <code>tar</code> that the next argument is the name of the <code>tar</code> archive). Using these altogether, <code>tar -xvf dumped</code>, we get the archive <code>data5.bin</code> which is another <code>tar</code> archive! We repeat the decompression process for <code>tar</code> files and get <code>data6.bin</code>. We repeat the process again to get <code>data8.bin</code> and use the <code>file</code> command once again to learn <code>data8.bin</code> is another <code>gzip</code> archive&hellip;</p>
+
+<p>Not seeing an end in sight, I change the name of <code>data8.bin</code> to <code>data8.gz</code> with the <code>mv</code> command and decompress the <code>gzip</code> file as discussed above and we get <code>data8</code>, a ASCII text file!!!!!!</p>
+
+<p>We <code>cat</code> the file and get the tear-inducing line:</p>
+
+<pre><code>The password is &lt;password&gt;
+</code></pre>
+
+<p>Finally, onto level 13.</p>
+
+<p>Level 13:</p>
+
+<p>The password for the next level is stored in <code>/etc/bandit_pass/bandit14</code> and can only be read by <code>user bandit14</code>. We do not get the password for level 14 but instead get a private SSH key that can be used to log onto the next level.</p>
+
+<p>In order to use the SSH key, we need to first <code>cat</code> the file and copy its contents to a file on our computer. From what I&rsquo;ve found <a href="https://unix.stackexchange.com/questions/257590/ssh-key-permissions-chmod-settings" target="_blank">online</a>, we&rsquo;re supposed to use <code>chmod</code> to give any private SSH key you create the <code>600</code> privacy permissions, which means only the owner may read and write to the file, so that we can only see what our privacy key is (although it didn&rsquo;t seem to matter for this challenge).</p>
+
+<p>Looking at the <code>ssh</code> command some more, we learn that we can use our copied private SSH key as the password for SSH in the command&rsquo;s line rather than waiting for it to ask us what the password is using the <code>-i</code> flag. Knowing this, we type the command &lsquo;ssh -i sshkey.private -p 2220 bandit14@bandit.labs.overthewire.org&rsquo; and log into bandit14 successfully! From there we can simply cat the file `/etc/bandit_pass/bandit14&rsquo; and retrieve the password to log onto level 14 without an SSH key!</p>
+
+<p>Level 14:</p>
+
+<p>The password for level 15 can be retrieved by submitting the password of the current level to <code>port 30000</code> on <code>localhost</code>. One of the commands the website recommends is using <code>nc</code>, which is used to create arbitrary TCP and UDP connections and listens. Judging from examples of its use online, we can use it to connect to a port and a destination IP address, and we can also type <code>localhost</code> to connect to our localhost rather than figuring out its IP address! To submit information, the <code>nc</code> command requires the port and destination IP address like so: <code>nc [destination] [port]</code>.</p>
+
+<p>Besides the <code>cat</code> command that prints teh content of its input to the standard output stream, there is the <code>echo</code> command which simply prints the argument you give it to the standard output stream, such as a password string.</p>
+
+<p>Putting this together, we can use this level&rsquo;s password, the <code>nc</code> command, and the <code>echo</code> command to submit the password to port 30000 on our localhost: <code>echo &lt;password&gt; | nc -30000 localhost</code>.</p>
+
+<p>The password is ours! Onto level 15.</p>
+
+<p>Level 15:</p>
+
+<p>The password for the next level can be retrieved by submitting the password of the current level to <code>port 30001</code> on <code>localhost</code> using SSL encryption. The website recommends using both the <code>openssl</code> and <code>s_client</code> commands to connect to the localhost on port 30001. Looking at <code>openssl</code>&rsquo;s <code>man</code> page, we see that this command allows us to use SSL/TLS encyption on the following command we call, while <code>s_client</code> allows us to create a generic SSL/TLS client that connects to a server using SSL/TLS. THe <code>s_client</code> command also allows us to <code>-connect</code> to a <code>host:port</code>.</p>
+
+<p>By using <code>echo</code> and piping its output into an <code>openssl s_client</code>, we can get the password for level 16: <code>echo &lt;password&gt; | openssl s_client -connect localhost:30001</code>. This gives us our password, but the website also gives us a hint to use the <code>-ign_eof</code> flag, which stops the connection from shutting down when an EOF character is reached in the input&hellip;typing <code>echo &lt;password&gt; | openssl s_client -connect localhost:30001 -ign_eof</code> gives us the same password. <a href="https://www.reddit.com/r/HowToHack/comments/2jixkl/going_through_bandit_wargames_at_overthewire_and/" target="_blank">Researching this</a>, apparently some people needed to use the <code>-ign_eof</code> flag, or the <code>quiet</code> flag (since it implies the use of the <code>-ign_eof</code> flag), to get the password.</p>
+
+<p>We will walk through levels 16+ in a later post, I hope you enjoyed this post!</p>
+        </div>
+        
+
+<footer>
+  <p class="meta">
+    <span class="byline author vcard">Posted by <span class="fn">Colin Lightfoot</span></span>
+    
+    <time>Dec 6, 2018</time>
+    
+      <span class="categories">
+        Tags:
+        
+          <a class="category" href="http://colinlightfoot.com/tags/overthewire">OverTheWire</a>  
+    
+    </span>
+  </p>
+
+  
+
+  <p class="meta">
+    
+        <a class="basic-alignment left" href="http://colinlightfoot.com/blog/2018-12-05-bandit-part-1/" title="Bandit Part 1">Bandit Part 1</a>
+    
+
+    
+  </p>
+  
+    
+  
+</footer>
+
+      </article>
+    </div>
+    
+
+<aside class="sidebar thirds">
+  <section class="first odd">
+
+    
+      <h1>About Me</h1>
+    
+
+    <p>
+      
+        I am a full-time scientist by day, graduate student by night learning what I can about
+  software development and pentesting. </br>Sometimes I study for certifications, other times I attempt a
+  new project or try to solve a CTF challenge. </br>Whatever I do, though, I&rsquo;ll try my best to share
+  it with you.
+      
+    </p>
+  </section>
+
+
+
+  
+  <ul class="sidebar-nav">
+    <li class="sidebar-nav-item">
+      <a target="_blank" href="https://github.com/hydure/" title="https://github.com/hydure/"><i class="fa fa-github fa-3x"></i></a>
+      
+      
+      <a target="_blank" href="https://twitter.com/hydure/" title="https://twitter.com/hydure/"><i class="fa fa-twitter fa-3x"></i></a>
+      
+         
+      
+      <a target="_blank" href="https://www.linkedin.com/in/colinflightfoot/" title="https://www.linkedin.com/in/colinflightfoot/"><i class="fa fa-linkedin fa-3x"></i></a>
+      <a target="_blank" href="https://stackoverflow.com/users/8271155/c-lightfoot" title="https://stackoverflow.com/users/8271155/c-lightfoot"><i class="fa fa-stack-overflow fa-3x"></i></a>
+      
+      <a target="_blank" href="https://www.facebook.com/colin.lightfoot.9" title="https://www.facebook.com/colin.lightfoot.9"><i class="fa fa-facebook fa-3x"></i></a>
+      
+      
+      
+
+    
+    
+    </li>
+  </ul>
+
+  
+
+  
+
+  
+  
+  
+    
+      <section class="even">
+        <h1>Recent Posts</h1>
+        <ul id="recent_posts">
+          
+          
+            
+              <li class="post">
+                <a href="/blog/2018-12-06-bandit-part-2/">Bandit Part 2</a>
+              </li>
+            
+          
+            
+              <li class="post">
+                <a href="/blog/2018-12-05-bandit-part-1/">Bandit Part 1</a>
+              </li>
+            
+          
+            
+              <li class="post">
+                <a href="/blog/2018-12-05-cloud-security-report/">Cloud Security Report</a>
+              </li>
+            
+          
+            
+              <li class="post">
+                <a href="/blog/2018-11-25-hello-world/">Hello World</a>
+              </li>
+            
+          
+            
+          
+        </ul>
+      </section>
+    
+  
+</aside>
+
+  </div>
+</div>
+
+    <footer role="contentinfo">
+      <p>Copyright &copy; 2018 Colin Lightfoot - <a href="http://colinlightfoot.com/license/">License</a> -
+        <span class="credit">Powered by <a target="_blank" href="https://gohugo.io">Hugo</a> and <a target="_blank" href="https://github.com/parsiya/hugo-octopress/">Hugo-Octopress</a> theme.
+      </p>
+    </footer>
+
+    
+    
+    
+
+    
+  </body>
+</html>
+
