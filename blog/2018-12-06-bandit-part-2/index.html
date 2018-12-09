@@ -151,7 +151,7 @@
 
 <p>Level 9</p>
 
-<p>The password for level 10 is stored in the file <code>data.txt</code> and is one of the few human-readable strings beginning with serveral <code>=</code> characters. We try <code>cat</code>ing the file, but learn that you cannot because the file is not human-readable. The level recommends using the <code>strings</code> command, which prints the strings of printable characters in files. With this we can look at the human-readable strings within the file and then search them using <code>grep</code>.</p>
+<p>The password for level 10 is stored in the file <code>data.txt</code> and is one of the few human-readable strings beginning with several <code>=</code> characters. We try <code>cat</code>ing the file, but learn that you cannot because the file is not human-readable. The level recommends using the <code>strings</code> command, which prints the strings of printable characters in files. With this we can look at the human-readable strings within the file and then search them using <code>grep</code>.</p>
 
 <p>Putting it all together, we type <code>strings data.txt | grep &quot;==&quot;</code> and get the following output:</p>
 
@@ -187,13 +187,13 @@
 
 <p>Level 12:</p>
 
-<p>The password for level 13 is stored in the file <code>data.txt</code>, which is a hexdump of a fiel that has been repeatedly compressed. We must create a directory in <code>/tmp</code> if we want to store files we decompress, as we are not allowed to in the home directory. This one looks like it&rsquo;s going to be a long one&hellip;challenged accepted.</p>
+<p>The password for level 13 is stored in the file <code>data.txt</code>, which is a hexdump of a file that has been repeatedly compressed. We must create a directory in <code>/tmp</code> if we want to store files we decompress, as we are not allowed to in the home directory. This one looks like it&rsquo;s going to be a long one&hellip;challenged accepted.</p>
 
 <p>We start by making a directory in <code>/tmp</code> with the command <code>mkdir /tmp/goo</code> and copy the <code>data.txt</code> file over to it with <code>cp data.txt /tmp/goo</code>. We then change to the directory. We need to reverse the hexdump with the <code>xxd</code> command the website suggests we use. We see that the <code>xxd</code> command can reverse the hexdump by using its <code>-r</code> flag.</p>
 
 <p>After typing <code>xxd -r data.txt &gt; dumped</code> to output the reversed hexdump into the file <code>dumped</code> we then call <code>file dumped</code> to assess the file type of <code>dumped</code> and see that it holds data compressed by the <code>gzip</code> command.</p>
 
-<p>To uncompress a <code>gzip</code>-compressed file, the file must first have the <code>gzip</code> ending <code>.gz</code>. So we change <code>dumped</code>&rsquo;s file name to <code>dumped.gz</code> with the command <code>mv</code> that simply moves the file to the new name: <code>mv dumped dumped.gz</code>. Next we use the <code>gunzip</code> command to decompress the file: <code>gunzip dumped.gz</code> and receive <code>dumped</code>. Then we check <code>dumped</code>&rsquo;s file type and find out that the decompressed file is a compressed bzip2 archive with a block size of 900k.</p>
+<p>To decompress a <code>gzip</code>-compressed file, the file must first have the <code>gzip</code> ending <code>.gz</code>. So we change <code>dumped</code>&rsquo;s file name to <code>dumped.gz</code> with the command <code>mv</code> that simply moves the file to the new name: <code>mv dumped dumped.gz</code>. Next we use the <code>gunzip</code> command to decompress the file: <code>gunzip dumped.gz</code> and receive <code>dumped</code>. Then we check <code>dumped</code>&rsquo;s file type and find out that the decompressed file is a compressed bzip2 archive with a block size of 900k.</p>
 
 <p>We can decompress a <code>bzip2</code>-compressed file by calling the <code>bzip2</code> command with the decompress <code>-d</code> flag. Typing <code>bzip2 dumped</code> gives us the file <code>dumped.out</code> that is a <code>gzip</code>-compressed archive. We change the name again to <code>dumped.gz</code> and decompress the file the same way we did before. The file decompresses to <code>dumped</code>, a <code>tar</code>-compressed archive&hellip;.argh!</p>
 
@@ -220,7 +220,7 @@
 
 <p>The password for level 15 can be retrieved by submitting the password of the current level to <code>port 30000</code> on <code>localhost</code>. One of the commands the website recommends is using <code>nc</code>, which is used to create arbitrary TCP and UDP connections and listens. Judging from examples of its use online, we can use it to connect to a port and a destination IP address, and we can also type <code>localhost</code> to connect to our localhost rather than figuring out its IP address! To submit information, the <code>nc</code> command requires the port and destination IP address like so: <code>nc [destination] [port]</code>.</p>
 
-<p>Besides the <code>cat</code> command that prints teh content of its input to the standard output stream, there is the <code>echo</code> command which simply prints the argument you give it to the standard output stream, such as a password string.</p>
+<p>Besides the <code>cat</code> command that prints the content of its input to the standard output stream, there is the <code>echo</code> command which simply prints the argument you give it to the standard output stream, such as a password string.</p>
 
 <p>Putting this together, we can use this level&rsquo;s password, the <code>nc</code> command, and the <code>echo</code> command to submit the password to port 30000 on our localhost: <code>echo &lt;password&gt; | nc -30000 localhost</code>.</p>
 
@@ -257,6 +257,8 @@
         <a class="basic-alignment left" href="http://colinlightfoot.com/blog/2018-12-05-bandit-part-1/" title="Bandit Part 1">Bandit Part 1</a>
     
 
+    
+      <a class="basic-alignment right" href="http://colinlightfoot.com/blog/2018-12-08-hack-the-box-registration/" title="Hack The Box Registration">Hack The Box Registration</a>
     
   </p>
   
@@ -325,6 +327,12 @@
           
             
               <li class="post">
+                <a href="/blog/2018-12-08-hack-the-box-registration/">Hack The Box Registration</a>
+              </li>
+            
+          
+            
+              <li class="post">
                 <a href="/blog/2018-12-06-bandit-part-2/">Bandit Part 2</a>
               </li>
             
@@ -345,8 +353,6 @@
               <li class="post">
                 <a href="/blog/2018-11-25-hello-world/">Hello World</a>
               </li>
-            
-          
             
           
         </ul>
