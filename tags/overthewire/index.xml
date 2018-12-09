@@ -6,10 +6,19 @@
     <description>Recent content in Overthewire on Code &#43; Pentesting</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 06 Dec 2018 10:06:53 -0500</lastBuildDate>
+    <lastBuildDate>Sun, 09 Dec 2018 16:43:07 -0500</lastBuildDate>
     
 	<atom:link href="http://colinlightfoot.com/tags/overthewire/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Bandit Part 3</title>
+      <link>http://colinlightfoot.com/blog/2018-12-09-bandit-part-3/</link>
+      <pubDate>Sun, 09 Dec 2018 16:43:07 -0500</pubDate>
+      
+      <guid>http://colinlightfoot.com/blog/2018-12-09-bandit-part-3/</guid>
+      <description>&lt;p&gt;Part 3 of my Bandit write-up, starting at level 16.&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Bandit Part 2</title>

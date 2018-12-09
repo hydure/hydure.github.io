@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1">
+
+  
+    
+    
+      <link href="/css/fonts.css" rel="stylesheet" type="text/css">
+    
+  
+
+  
+  <title>Bandit Part 3</title>
+
+  
+  
+  <link rel="stylesheet" href="/css/hugo-octopress.css">
+
+  
+  
+
+  
+    <link rel="stylesheet" href="/css/fork-awesome.min.css">
+  
+
+  
+  <link href="http://colinlightfoot.com/favicon.png" rel="icon">
+
+  
+  
+
+  <meta name="description" content="Colin Lightfoot&#39;s technical blog. I&#39;m sure he&#39;s up to something...">
+  <meta name="keywords" content="[Code Pentesting Interesting Research Other]">
+  <meta name="author" content="Colin Lightfoot">
+
+  
+  <meta name="generator" content="Hugo 0.51" />
+
+  
+  
+
+  
+  
+</head>
+<body>
+
+
+<header role="banner">
+<hgroup>
+  
+  <h1><a href="http://colinlightfoot.com/">Code &#43; Pentesting</a></h1>
+    <h2>Showing off the cool things I study.</h2>
+</hgroup></header>
+
+
+<nav role="navigation">
+<fieldset class="mobile-nav">
+  
+  <select onchange="location = this.value;">
+    <option value="">Navigate…</option>
+      
+        <option value="http://colinlightfoot.com/">» Blog</option>
+      
+        <option value="http://colinlightfoot.com/archive/">» Archive</option>
+      
+  </select>
+</fieldset>
+
+
+<ul class="main-navigation">
+  
+  
+    
+      <li><a href="http://colinlightfoot.com/" title="Blog">Blog</a></li>
+    
+  
+    
+      <li><a href="http://colinlightfoot.com/archive/" title="Archive"  target="_blank" >Archive</a></li>
+    
+  
+</ul>
+
+<ul class="subscription">
+  
+</ul>
+
+
+</nav>
+
+
+<div id="main">
+  <div id="content">
+    <div>
+      <article class="hentry" role="article">
+
+        
+        
+
+<header>
+  <p class="meta">Dec 9, 2018
+     - 6 minute read 
+     - <a href="http://colinlightfoot.com/blog/2018-12-09-bandit-part-3/#disqus_thread">Comments</a>
+
+    
+    
+      - <a class="label" href="http://colinlightfoot.com/categories/pentesting/">Pentesting </a>
+    
+  </p>
+  <h1 class="entry-title">
+     Bandit Part 3 
+  </h1>
+</header>
+
+
+        <div class="entry-content">
+          
+          
+          
+          <p>Part 3 of my Bandit write-up, starting at level 16.</p>
+
+<p>Level 16:</p>
+
+<p>The password for level 17 can be found by submitting this level&rsquo;s password to a port on <code>localhost</code> in the range <code>31000</code> to <code>32000</code>. We must first find out which of these ports have a server listening on them, then find out which of these servers speak <code>SSL</code>, and finally get a response from the only server in those remaining that will give me level 17&rsquo;s password.</p>
+
+<p>The webpage suggests we use the <code>nmap</code> command. After looking at an <a href="https://hackertarget.com/nmap-cheatsheet-a-quick-reference-guide/" target="_blank">nmap cheat sheet</a>, we learn that we can specify the range of ports <code>-p</code> to use and detect what standard services <code>-sV</code> are being run on the server. Putting this knowledge together, we type the command <code>nmap -sV -p 31000-32000 localhost</code> and receive the following output:</p>
+
+<pre><code>Starting Nmap 7.40 ( https://nmap.org ) at 2018-12-09 22:49 CET
+Nmap scan report for localhost (127.0.0.1)
+Host is up (0.00020s latency).
+Not shown: 999 closed ports
+PORT      STATE SERVICE     VERSION
+31518/tcp open  ssl/echo
+31790/tcp open  ssl/unknown
+1 service unrecognized despite returning data. If you know the service/version, please submit the following fingerprint at https://nmap.org/cgi-bin/submit.cgi?new-service :
+SF-Port31790-TCP:V=7.40%T=SSL%I=7%D=12/9%Time=5C0D8DF6%P=x86_64-pc-linux-g
+SF:nu%r(GenericLines,31,&quot;Wrong!\x20Please\x20enter\x20the\x20correct\x20cu
+SF:rrent\x20password\n&quot;)%r(GetRequest,31,&quot;Wrong!\x20Please\x20enter\x20the
+SF:\x20correct\x20current\x20password\n&quot;)%r(HTTPOptions,31,&quot;Wrong!\x20Plea
+SF:se\x20enter\x20the\x20correct\x20current\x20password\n&quot;)%r(RTSPRequest,
+SF:31,&quot;Wrong!\x20Please\x20enter\x20the\x20correct\x20current\x20password\
+SF:n&quot;)%r(Help,31,&quot;Wrong!\x20Please\x20enter\x20the\x20correct\x20current\x
+SF:20password\n&quot;)%r(SSLSessionReq,31,&quot;Wrong!\x20Please\x20enter\x20the\x20
+SF:correct\x20current\x20password\n&quot;)%r(TLSSessionReq,31,&quot;Wrong!\x20Please
+SF:\x20enter\x20the\x20correct\x20current\x20password\n&quot;)%r(Kerberos,31,&quot;W
+SF:rong!\x20Please\x20enter\x20the\x20correct\x20current\x20password\n&quot;)%r
+SF:(FourOhFourRequest,31,&quot;Wrong!\x20Please\x20enter\x20the\x20correct\x20c
+SF:urrent\x20password\n&quot;)%r(LPDString,31,&quot;Wrong!\x20Please\x20enter\x20the
+SF:\x20correct\x20current\x20password\n&quot;)%r(LDAPSearchReq,31,&quot;Wrong!\x20Pl
+SF:ease\x20enter\x20the\x20correct\x20current\x20password\n&quot;)%r(SIPOptions
+SF:,31,&quot;Wrong!\x20Please\x20enter\x20the\x20correct\x20current\x20password
+SF:\n&quot;);
+</code></pre>
+
+<p>Seeing this, we know that port 31518 will only <code>echo</code> back the password we put in, while the other port&rsquo;s server first checks if we have sent the correct password most likely before sending us level 17&rsquo;s password.</p>
+
+<p>We type <code>echo cluFn7wTiGryunymYOu4RcffSxQluehd | openssl s_client -connect localhost:31790 -quiet</code> to retrieve the RSA private key needed to get to level 17. Note: I read other people&rsquo;s walkthroughs of levels 1-15 to see if I missed anything and learned that the <code>-quiet</code> argument for <code>openssl s_client</code> prevented a lot of unnecessary output in the terminal.</p>
+
+<p>We save a copy of the private key and follow the other steps already outlined in level 13&rsquo;s write-up. We then put it all together by typing in the standard <code>ssh</code> command to log into our Bandit servers but also add the <code>-i</code> argument with the key we just saved. Onto level 17!</p>
+
+<p>Level 17:</p>
+
+<p>There are two files in the home directory: <code>passwords.old</code> and <code>passwords.new</code>. The password for the next level is in <code>passwords.new</code> and is the only line that has been changed between the two files. The website recommends that we try and use the <code>diff</code> command, which outputs the lines in both files that are different from each other.</p>
+
+<p>Typing <code>diff passwords.old passwords.new</code>, we receive the following output:</p>
+
+<pre><code>42c42
+&lt; hlbSBPAWJmL6WFDb06gpTx1pPButblOA
+---
+&gt; kfBf3eYk5BPBRzwjqutbbfE887SVc5Yd
+</code></pre>
+
+<p>The &ldquo;&gt;&rdquo; character denotes the line difference in the second file, <code>passwords.new</code>, which is the password for level 18!</p>
+
+<p>Level 18:</p>
+
+<p>If you noticed that we get logged out of the level 18 server after inputting the login password we acquired in the previous level with the output message, &ldquo;Byebye !&rdquo;, then you did correctly solve the previous level&rsquo;s challenge the site states. The output and automatic logout is instead related to this level&rsquo;s challenge&hellip; D:</p>
+
+<p>The password for level 19 is stored in the home directory&rsquo;s <code>readme</code> file like in level 0. The catch here is that the <code>.bashrc</code> file has bee modified to log you out when you login via SSH. <a href="https://serverfault.com/questions/94503/login-without-running-bash-profile-or-bashrc" target="_blank">After searching for how to login without running <code>.bashrc</code></a>, I learned that the <code>-t</code> argument with <code>/bin/sh</code> appended to the command allows us to login without running the <code>.bashrc</code> file. This is because the <code>-t</code> argument forces a pseudo-terminal allocation that can be used to execute commands on a remote machine such as my laptop.</p>
+
+<p>Once I added the <code>-t</code> argument and <code>\bin\sh</code> to the end of the command and entered the password to get into level 18, I was able to <code>cat</code> the <code>readme</code> file and retrieve the password for the next level!</p>
+
+<p>Level 19:</p>
+
+<p>Level 20&rsquo;s password is found in <code>/etc/bandit_pass</code>. The website recommends that we use the &ldquo;setuid binary&rdquo; in the home directory. After typing <code>ls</code>, we can see that there is a red-highlighted file in the home directory called <code>bandit20-do</code>. We could not find what the red highlight symbolizes, but we ran the <code>file</code> command on the file and discovered that the file is a &ldquo;setuid executable&rdquo;.</p>
+
+<p>The next step was to see if we could see the files in <code>/etc/bandit_pass</code>, and found that we did not have the permissions to access these password files, especially the one that contains the password for the next level <code>bandit20</code>. We go back to the home directory and see the permissions each file has using <code>ls -al</code> to see all the available files along with their <a href="https://stackoverflow.com/questions/17578647/what-does-terminal-command-ls-l-show" target="_blank">respective permissions</a> and get the following output:</p>
+
+<pre><code>total 28
+drwxr-xr-x  2 root     root     4096 Oct 16 14:00 .
+drwxr-xr-x 41 root     root     4096 Oct 16 14:00 ..
+-rwsr-x---  1 bandit20 bandit19 7296 Oct 16 14:00 bandit20-do
+-rw-r--r--  1 root     root      220 May 15  2017 .bash_logout
+-rw-r--r--  1 root     root     3526 May 15  2017 .bashrc
+-rw-r--r--  1 root     root      675 May 15  2017 .profile
+</code></pre>
+
+<p>Now we can see that the red-highlight means that <code>bandit20</code> owns the executable file. We try and run <code>bandit20</code> using <code>./bandit20</code>, and we get the following output:</p>
+
+<pre><code>Run a command as another user.
+Example: ./bandit20-do id
+</code></pre>
+
+<p>We now understand that we can run the command <code>cat</code> as user <code>bandit20</code> with the <code>bandit20</code> setuid executable and open up the file <code>etc/bandit_pass/bandit20</code> to get our password! Putting this all together, we type <code>./bandit20-do cat /etc/bandit_pass/bandit20</code> in the home directory to get level 20&rsquo;s password!</p>
+
+<p>Level 20:</p>
+
+<p>There is a setuid binary, <code>suconnect</code> in the home directory that first makes a connection to <code>localhost</code> on the <code>port</code> you specify as a command line argument before reading a line of text from the connection and comparing it to the level 20&rsquo;s password. If the password is correct, then the binary file will provide us the password for level 21. It then hints that we should create our own network daemon and try connecting to it.</p>
+
+<p>The website recommends we use the command <code>nc</code>, and, after <a href="https://www.computerhope.com/unix/nc.htm" target="_blank">looking at some of its uses</a>, we found that we can create a Netcat daemon that listens <code>-l</code> for connections on a certain port <code>-p</code> and forwards a message to any clients connecting on said port. After calling <code>echo &quot;&lt;prevLvlPassword&gt; | nc -l -p 31337</code> (I hope you find that funny), we then call <code>suconnect</code> in the home directory on a separate terminal and use <code>31337</code> as the argument for the port we want to listen to, since that is the port our netcat daemon is listening and forwarding a message on.</p>
+
+<p>After typing <code>./suconnect 31337</code> on a separate terminal from the Netcat daemon, the executable connects to the daemon, receives the previous level&rsquo;s password, and outputs the following lines:</p>
+
+<pre><code>Read: GbKksEFF4yrVs6il55v6gwY5aVje5f0j
+Password matches, sending next password
+</code></pre>
+
+<p>Then <code>suconnect</code> sends the password over to the Netcat daemon, which outputs the password for level 21!</p>
+
+<p>I hope you enjoyed part 3 of my Bandit walkthrough. Part 4 will include the walkthrough for levels 21-25 as these levels are now sometimes taking a while to figure out and complete.</p>
+        </div>
+        
+
+<footer>
+  <p class="meta">
+    <span class="byline author vcard">Posted by <span class="fn">Colin Lightfoot</span></span>
+    
+    <time>Dec 9, 2018</time>
+    
+      <span class="categories">
+        Tags:
+        
+          <a class="category" href="http://colinlightfoot.com/tags/overthewire">OverTheWire</a>  
+    
+    </span>
+  </p>
+
+  
+
+  <p class="meta">
+    
+        <a class="basic-alignment left" href="http://colinlightfoot.com/blog/2018-12-08-hack-the-box-registration/" title="Hack The Box Registration">Hack The Box Registration</a>
+    
+
+    
+  </p>
+  
+    
+  
+</footer>
+
+      </article>
+    </div>
+    
+
+<aside class="sidebar thirds">
+  <section class="first odd">
+
+    
+      <h1>About Me</h1>
+    
+
+    <p>
+      
+        I am a full-time scientist by day, graduate student by night learning what I can about
+  software development and pentesting. </br>Sometimes I study for certifications, other times I attempt a
+  new project or try to solve a CTF challenge. </br>Whatever I do, though, I&rsquo;ll try my best to share
+  it with you.
+      
+    </p>
+  </section>
+
+
+
+  
+  <ul class="sidebar-nav">
+    <li class="sidebar-nav-item">
+      <a target="_blank" href="https://github.com/hydure/" title="https://github.com/hydure/"><i class="fa fa-github fa-3x"></i></a>
+      
+      
+      <a target="_blank" href="https://twitter.com/hydure/" title="https://twitter.com/hydure/"><i class="fa fa-twitter fa-3x"></i></a>
+      
+         
+      
+      <a target="_blank" href="https://www.linkedin.com/in/colinflightfoot/" title="https://www.linkedin.com/in/colinflightfoot/"><i class="fa fa-linkedin fa-3x"></i></a>
+      <a target="_blank" href="https://stackoverflow.com/users/8271155/c-lightfoot" title="https://stackoverflow.com/users/8271155/c-lightfoot"><i class="fa fa-stack-overflow fa-3x"></i></a>
+      
+      <a target="_blank" href="https://www.facebook.com/colin.lightfoot.9" title="https://www.facebook.com/colin.lightfoot.9"><i class="fa fa-facebook fa-3x"></i></a>
+      
+      
+      
+
+    
+    
+    </li>
+  </ul>
+
+  
+
+  
+
+  
+  
+  
+    
+      <section class="even">
+        <h1>Recent Posts</h1>
+        <ul id="recent_posts">
+          
+          
+            
+              <li class="post">
+                <a href="/blog/2018-12-09-bandit-part-3/">Bandit Part 3</a>
+              </li>
+            
+          
+            
+              <li class="post">
+                <a href="/blog/2018-12-08-hack-the-box-registration/">Hack The Box Registration</a>
+              </li>
+            
+          
+            
+              <li class="post">
+                <a href="/blog/2018-12-06-bandit-part-2/">Bandit Part 2</a>
+              </li>
+            
+          
+            
+              <li class="post">
+                <a href="/blog/2018-12-05-bandit-part-1/">Bandit Part 1</a>
+              </li>
+            
+          
+            
+              <li class="post">
+                <a href="/blog/2018-12-05-cloud-security-report/">Cloud Security Report</a>
+              </li>
+            
+          
+        </ul>
+      </section>
+    
+  
+</aside>
+
+  </div>
+</div>
+
+    <footer role="contentinfo">
+      <p>Copyright &copy; 2018 Colin Lightfoot - <a href="http://colinlightfoot.com/license/">License</a> -
+        <span class="credit">Powered by <a target="_blank" href="https://gohugo.io">Hugo</a> and <a target="_blank" href="https://github.com/parsiya/hugo-octopress/">Hugo-Octopress</a> theme.
+      </p>
+    </footer>
+
+    
+    
+    
+
+    
+  </body>
+</html>
+
