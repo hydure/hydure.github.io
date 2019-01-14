@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://colinlightfoot.com/blog/2019-01-13-daily-challenges/</loc>
+    <lastmod>2019-01-13T19:09:08-05:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://colinlightfoot.com/blog/2018-12-09-bandit-part-3/</loc>
     <lastmod>2018-12-09T16:43:07-05:00</lastmod>
   </url>
@@ -56,12 +61,18 @@
   
   <url>
     <loc>http://colinlightfoot.com/</loc>
-    <lastmod>2018-12-09T16:43:07-05:00</lastmod>
+    <lastmod>2019-01-13T19:09:08-05:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://colinlightfoot.com/content/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://colinlightfoot.com/tags/daily-challenges/</loc>
+    <lastmod>2019-01-13T19:09:08-05:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -91,7 +102,13 @@
   
   <url>
     <loc>http://colinlightfoot.com/post/</loc>
-    <lastmod>2018-12-09T16:43:07-05:00</lastmod>
+    <lastmod>2019-01-13T19:09:08-05:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://colinlightfoot.com/categories/programming/</loc>
+    <lastmod>2019-01-13T19:09:08-05:00</lastmod>
     <priority>0</priority>
   </url>
   
