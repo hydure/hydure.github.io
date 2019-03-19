@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://colinlightfoot.com/blog/2019-03-18-weather-app/</loc>
+    <lastmod>2019-03-18T19:57:32-04:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://colinlightfoot.com/blog/2019-02-07-quick-update/</loc>
     <lastmod>2019-02-07T18:38:50-05:00</lastmod>
   </url>
@@ -43,6 +48,12 @@
   </url>
   
   <url>
+    <loc>http://colinlightfoot.com/tags/angular/</loc>
+    <lastmod>2019-03-18T19:57:32-04:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://colinlightfoot.com/archive/</loc>
   </url>
   
@@ -66,7 +77,7 @@
   
   <url>
     <loc>http://colinlightfoot.com/</loc>
-    <lastmod>2019-02-07T18:38:50-05:00</lastmod>
+    <lastmod>2019-03-18T19:57:32-04:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -78,6 +89,12 @@
   <url>
     <loc>http://colinlightfoot.com/tags/daily-challenges/</loc>
     <lastmod>2019-01-13T19:09:08-05:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://colinlightfoot.com/categories/development/</loc>
+    <lastmod>2019-03-18T19:57:32-04:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -113,7 +130,7 @@
   
   <url>
     <loc>http://colinlightfoot.com/post/</loc>
-    <lastmod>2019-02-07T18:38:50-05:00</lastmod>
+    <lastmod>2019-03-18T19:57:32-04:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -131,7 +148,7 @@
   
   <url>
     <loc>http://colinlightfoot.com/tags/</loc>
-    <lastmod>2018-12-05T12:40:08-05:00</lastmod>
+    <lastmod>2019-03-18T19:57:32-04:00</lastmod>
     <priority>0</priority>
   </url>
   

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Angular on Code &#43; Pentesting</title>
+    <link>http://colinlightfoot.com/tags/angular/</link>
+    <description>Recent content in Angular on Code &#43; Pentesting</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 18 Mar 2019 19:57:32 -0400</lastBuildDate>
+    
+	<atom:link href="http://colinlightfoot.com/tags/angular/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Weather App</title>
+      <link>http://colinlightfoot.com/blog/2019-03-18-weather-app/</link>
+      <pubDate>Mon, 18 Mar 2019 19:57:32 -0400</pubDate>
+      
+      <guid>http://colinlightfoot.com/blog/2019-03-18-weather-app/</guid>
+      <description>&lt;p&gt;I took up an interview challenge from DegreeWorks and created a bare-bones web app that pulls data from &lt;a href=&#34;https://openweathermap.org/&#34; target=&#34;_blank&#34;&gt;OpenWeatherMap&lt;/a&gt;.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

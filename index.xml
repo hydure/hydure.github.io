@@ -6,10 +6,19 @@
     <description>Recent content on Code &#43; Pentesting</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 07 Feb 2019 18:38:50 -0500</lastBuildDate>
+    <lastBuildDate>Mon, 18 Mar 2019 19:57:32 -0400</lastBuildDate>
     
 	<atom:link href="http://colinlightfoot.com/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Weather App</title>
+      <link>http://colinlightfoot.com/blog/2019-03-18-weather-app/</link>
+      <pubDate>Mon, 18 Mar 2019 19:57:32 -0400</pubDate>
+      
+      <guid>http://colinlightfoot.com/blog/2019-03-18-weather-app/</guid>
+      <description>&lt;p&gt;I took up an interview challenge from DegreeWorks and created a bare-bones web app that pulls data from &lt;a href=&#34;https://openweathermap.org/&#34; target=&#34;_blank&#34;&gt;OpenWeatherMap&lt;/a&gt;.&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Quick Update</title>
