@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://colinlightfoot.com/blog/2019-09-29-reasons-for-sabbatical/</loc>
+    <lastmod>2019-09-29T11:48:36-04:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://colinlightfoot.com/blog/2019-09-29-creating-a-minecraft-server-on-azure-cloud/</loc>
     <lastmod>2019-09-29T10:54:28-04:00</lastmod>
   </url>
@@ -75,8 +80,20 @@
   </url>
   
   <url>
+    <loc>http://colinlightfoot.com/categories/career/</loc>
+    <lastmod>2019-09-29T11:48:36-04:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://colinlightfoot.com/categories/</loc>
     <lastmod>2018-11-25T20:06:08-05:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://colinlightfoot.com/tags/certifications/</loc>
+    <lastmod>2019-09-29T11:48:36-04:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -94,7 +111,7 @@
   
   <url>
     <loc>http://colinlightfoot.com/</loc>
-    <lastmod>2019-09-29T10:54:28-04:00</lastmod>
+    <lastmod>2019-09-29T11:48:36-04:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -118,6 +135,12 @@
   <url>
     <loc>http://colinlightfoot.com/tags/hackthebox/</loc>
     <lastmod>2018-12-08T22:55:13-05:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://colinlightfoot.com/tags/microsoft/</loc>
+    <lastmod>2019-09-29T11:48:36-04:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -153,7 +176,7 @@
   
   <url>
     <loc>http://colinlightfoot.com/post/</loc>
-    <lastmod>2019-09-29T10:54:28-04:00</lastmod>
+    <lastmod>2019-09-29T11:48:36-04:00</lastmod>
     <priority>0</priority>
   </url>
   
