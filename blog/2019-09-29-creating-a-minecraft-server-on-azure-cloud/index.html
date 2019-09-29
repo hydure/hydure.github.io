@@ -17,7 +17,7 @@
   
 
   
-  <title>Hack The Box Registration</title>
+  <title>Creating a Minecraft Server on Azure Cloud</title>
 
   
   
@@ -104,17 +104,17 @@
         
 
 <header>
-  <p class="meta">Dec 8, 2018
+  <p class="meta">Sep 29, 2019
      - 3 minute read 
-     - <a href="http://colinlightfoot.com/blog/2018-12-08-hack-the-box-registration/#disqus_thread">Comments</a>
+     - <a href="http://colinlightfoot.com/blog/2019-09-29-creating-a-minecraft-server-on-azure-cloud/#disqus_thread">Comments</a>
 
     
     
-      - <a class="label" href="http://colinlightfoot.com/categories/pentesting/">Pentesting </a>
+      - <a class="label" href="http://colinlightfoot.com/categories/cloud-development/">Cloud Development </a>
     
   </p>
   <h1 class="entry-title">
-     Hack The Box Registration 
+     Creating a Minecraft Server on Azure Cloud 
   </h1>
 </header>
 
@@ -123,55 +123,22 @@
           
           
           
-          <p>Registering for this was a lot harder than I thought&hellip;</p>
+          <p>This post explains how I created a Minecraft server using Azure cloud because I could not find any working template for such a case.</p>
 
-<p><img src="/HackTheBoxPost/InitialRequest.png" alt="Asks for invite code." /></p>
+<p>First off, I&rsquo;m sorry for not blogging in a while, there have been many changes in my life that I will discuss in another blog post. Let&rsquo;s dive in to the topic of this post for now.</p>
 
-<p>As you can see, one must first provide an invite code in order to register for an account. Unfortunately for me, I have never received one&hellip;</p>
-
-<p>Because this is a website dedicated to running boxes and other challenges to crack, it would make sense that they require you to first prove your resolve before having any access to the site&rsquo;s goodies.</p>
-
-<p>From previous front-end development experience, I knew the Google Chrome browser has Developer Tools that allow its users to inspect a webpage&rsquo;s elements as well as the JavaScript files they run. Upon opening the Tools, their console generated this motivational spin on the &ldquo;Keep Calm&rdquo; meme.</p>
-
-<p><img src="/HackTheBoxPost/ConsoleScreen.png" alt="Funny console screen." /></p>
-
-<p>I first checked out the registration form element and saw that it contained a complex token embedded in it:</p>
-
-<p><img src="/HackTheBoxPost/Form.png" alt="Form element." /></p>
-
-<p>I had no idea what the token did, so I first tried entering the value of the token, which failed. I then tried changing the value of the token and received a warning message:</p>
-
-<p><img src="/HackTheBoxPost/XSRFFail.png" alt="Warning message." /></p>
-
-<p>Guess I should&rsquo;ve not fooled around&hellip;</p>
-
-<p>After looking through the other elements on the webpage, I began to look at its JavaScript files, starting with <code>/js/inviteapi.min.js</code>. I opened the file to find an ugly-looking, complex function that desperately needed a makeover.</p>
-
-<p><img src="/HackTheBoxPost/UglyFunc.png" alt="Ugly function." /></p>
-
-<p>After browsing some sites and trying a few different software, I found the Online JavaScript Beautifier. I copied the ugly function onto it, pressed the &ldquo;Beautify JavaScript or HTML&rdquo; button, and learned that there were actually two independent functions within that min.js file!</p>
-
-<p><img src="/HackTheBoxPost/OnlineJavascriptBeautifier.png" alt="Beautiful function." /></p>
-
-<p>Since I needed some way to either retrieve or make the invite code I required to register a new account on hackthebox.eu, I looked at the <code>makeInviteCode()</code> function and saw that it makes a <code>POST</code> request to <code>https://www.hackthebox.eu/api/invite/how/to/generate</code>. I then looked up the linux command that would allow me to make a post request to a website and <a href="https://askubuntu.com/questions/299870/http-post-and-get-using-curl-in-linux" target="_blank">found</a> that the <code>curl</code> command with the <code>-X POST</code> provides this functionality.</p>
-
-<p>I sent the initial <code>curl</code> POST request and retrieved some <code>&quot;data&quot;</code> that was encrypted using <code>base64</code> encryption. One quick Google search later, and I used the <code>echo</code> command to pipe the encrypted data into the <code>base64</code> command with the <code>--decode</code> flag set to true. I then received the message to make another POST request to `<a href="https://www.hackthebox.eu/api/invite/generate'" target="_blank">https://www.hackthebox.eu/api/invite/generate'</a>.</p>
-
-<p><img src="/HackTheBoxPost/InitialCurlPOST.png" alt="Initial curl post." /></p>
-
-<p>After making this second POST request, I received a code that I then tried to us as the invite code, which was unsuccessful.</p>
-
-<p><img src="/HackTheBoxPost/SecondCurlPOST.png" alt="Second curl post." /></p>
-
-<p>Assuming correctly, I tried the <code>base64</code> decoding method I used above and retrieved what I hoped to be the final code.</p>
-
-<p><img src="/HackTheBoxPost/FinalCode.png" alt="Final code!" /></p>
-
-<p>And SUCCESS!!! :D I could now successfully register an account on hackthebox.eu!</p>
-
-<p><img src="/HackTheBoxPost/SUCCESS.png" alt="SUCCESS" /></p>
-
-<p>I&rsquo;ll be trying some of their easier CTF challenges, and maybe boxes, once I finish Bandit up, but I wanted to give this a go and it only took a few hours. :) I hope you enjoyed reading this as enjoyable as I found solving the challenge.</p>
+<p>NOTE: This is to create a Minecraft server for the Java, NOT WINDOWS 10, version of Minecraft using Azure cloud.
+1.  Create an Azure cloud account.
+a.  Select free account from the top left of the Azure homepage.
+b.  Click the green button on the blue banner labelled, “Start for free”.
+c.  Sign into your Microsoft account. If you do not have a Microsoft account, then click “Create Microsoft account.
+d.  After signing in, and creating your account if you didn’t already have one, give Azure a couple of seconds to load and then complete this form. Even though this is a free trial account, you will need to enter your credit/debit card details when Azure charges you for its services. The Minecraft server we will be making costs about $31 per month if you keep it running for the whole month, but there are far cheaper options – I just like to have up to 20 people playing on my Minecraft server at the same time. Agree to the terms and conditions then click “Sign up” to finish this process.
+e.  Once your subscription is ready for you, click the green button to start using Azure.
+2.  <em>Discusses topology</em> Here is the entire network we will be creating. It may look very daunting and complex, but the process of creating this network is incredibly simple. This network is essentially only a VM, or virtual machine, with a firewall. The NIC, or network interface card, allows us to connect our VM to the Internet, and the public IP address allows us to reach our Minecraft server from the Internet, both of these components as well as the subnet and virtual network are created when we create the VM. The security group can also, and will, be created when we create our VM. So, again, this may look complex but is a rather easy and straightforward process.
+3.  When the Azure portal opens, click on “Create a resource” located at the top of the left-hand side’s navigation panel. From there type “Ubuntu Server 18.04 VM” or click on its icon found under the “Popular” section as shown here.
+4.  Now we arrive at the “Blade”, “Create a virtual machine” where we will configure the VM that will host our Minecraft server. Choose a subscription that covers how much money you plan on spending to run your Minecraft server. After choosing the proper subscription, we need to choose which Resource group, which is the container that holds every component of our Minecraft network, we will use. Since we do not have one yet, click “Create new” and then create a name for this new Resource Group.
+5.  Now we need to give the VM a name. I’d recommend making the name something obvious, like MinecraftServerVM. Then choose a region that you are in to ensure the lowest possible latency between you and your server. Keep the availability options and image options the same, and then choose what size you’d like your server to be. I recommend the B2s as the absolute minimum size for your server.
+6.  Next choose which authentication type you would like to use to login to your VM. In this video, I will choose the “Password” option, but I recommend creating an SSH public key and choosing the “SSH public key” option to ensure that you are using the highest levels of security for your virtual machine.</p>
         </div>
         
 
@@ -179,12 +146,12 @@
   <p class="meta">
     <span class="byline author vcard">Posted by <span class="fn">Colin Lightfoot</span></span>
     
-    <time>Dec 8, 2018</time>
+    <time>Sep 29, 2019</time>
     
       <span class="categories">
         Tags:
         
-          <a class="category" href="http://colinlightfoot.com/tags/hackthebox">HackTheBox</a>  
+          <a class="category" href="http://colinlightfoot.com/tags/minecraft">Minecraft</a>  <a class="category" href="http://colinlightfoot.com/tags/azure">Azure</a>  
     
     </span>
   </p>
@@ -193,11 +160,9 @@
 
   <p class="meta">
     
-        <a class="basic-alignment left" href="http://colinlightfoot.com/blog/2018-12-06-bandit-part-2/" title="Bandit Part 2">Bandit Part 2</a>
+        <a class="basic-alignment left" href="http://colinlightfoot.com/blog/2019-03-18-weather-app/" title="Weather App">Weather App</a>
     
 
-    
-      <a class="basic-alignment right" href="http://colinlightfoot.com/blog/2018-12-09-bandit-part-3/" title="Bandit Part 3">Bandit Part 3</a>
     
   </p>
   
