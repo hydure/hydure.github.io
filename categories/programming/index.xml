@@ -6,10 +6,19 @@
     <description>Recent content in Programming on Code &#43; Pentesting</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 13 Jan 2019 19:09:08 -0500</lastBuildDate>
+    <lastBuildDate>Mon, 07 Oct 2019 21:27:17 -0400</lastBuildDate>
     
 	<atom:link href="http://colinlightfoot.com/categories/programming/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>DailyChallenges 1 &amp; 2</title>
+      <link>http://colinlightfoot.com/blog/2019-10-07-dailychallenges-1-2/</link>
+      <pubDate>Mon, 07 Oct 2019 21:27:17 -0400</pubDate>
+      
+      <guid>http://colinlightfoot.com/blog/2019-10-07-dailychallenges-1-2/</guid>
+      <description>&lt;p&gt;There is this website, Daily Coding Problem, that emails you Daily Challenges asked by major tech companies that you can complete for practice. Many people use it for coding interviews, but I&amp;rsquo;m aiming to use it to stop from getting rusty while I figure out what project I want to do next. Enjoy my thought processes!&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Daily Challenges</title>
