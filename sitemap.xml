@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://colinlightfoot.com/blog/2019-10-15-automatic-carousel/</loc>
+    <lastmod>2019-10-15T16:15:17-04:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://colinlightfoot.com/blog/2019-10-07-dailychallenges-1-2/</loc>
     <lastmod>2019-10-07T21:27:17-04:00</lastmod>
   </url>
@@ -116,7 +121,7 @@
   
   <url>
     <loc>http://colinlightfoot.com/</loc>
-    <lastmod>2019-10-07T21:27:17-04:00</lastmod>
+    <lastmod>2019-10-15T16:15:17-04:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -140,6 +145,18 @@
   <url>
     <loc>http://colinlightfoot.com/tags/hackthebox/</loc>
     <lastmod>2018-12-08T22:55:13-05:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://colinlightfoot.com/tags/html-css/</loc>
+    <lastmod>2019-10-15T16:15:17-04:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://colinlightfoot.com/tags/javascript/</loc>
+    <lastmod>2019-10-15T16:15:17-04:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -181,13 +198,13 @@
   
   <url>
     <loc>http://colinlightfoot.com/post/</loc>
-    <lastmod>2019-10-07T21:27:17-04:00</lastmod>
+    <lastmod>2019-10-15T16:15:17-04:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://colinlightfoot.com/categories/programming/</loc>
-    <lastmod>2019-10-07T21:27:17-04:00</lastmod>
+    <lastmod>2019-10-15T16:15:17-04:00</lastmod>
     <priority>0</priority>
   </url>
   

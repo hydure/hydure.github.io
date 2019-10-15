@@ -6,10 +6,19 @@
     <description>Recent content in Posts on Code &#43; Pentesting</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 07 Oct 2019 21:27:17 -0400</lastBuildDate>
+    <lastBuildDate>Tue, 15 Oct 2019 16:15:17 -0400</lastBuildDate>
     
 	<atom:link href="http://colinlightfoot.com/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Automatic Carousel</title>
+      <link>http://colinlightfoot.com/blog/2019-10-15-automatic-carousel/</link>
+      <pubDate>Tue, 15 Oct 2019 16:15:17 -0400</pubDate>
+      
+      <guid>http://colinlightfoot.com/blog/2019-10-15-automatic-carousel/</guid>
+      <description>&lt;p&gt;One of the features someone wanted me to implement for their website was an automatic carousel for their site. This article explains some ways on how to implement one.&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>DailyChallenges 1 &amp; 2</title>
