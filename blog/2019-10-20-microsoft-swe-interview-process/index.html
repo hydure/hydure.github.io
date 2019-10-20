@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1">
+  
+    
+    
+      <link href="/css/fonts.css" rel="stylesheet" type="text/css">
+    
+  
+
+  
+  <script data-ad-client="ca-pub-4017802261362613" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  
+  
+  <title>Microsoft SWE Interview Process</title>
+
+  
+  
+  <link rel="stylesheet" href="/css/hugo-octopress.css">
+
+  
+  
+
+  
+    <link rel="stylesheet" href="/css/fork-awesome.min.css">
+  
+
+  
+  <link href="http://colinlightfoot.com/favicon.png" rel="icon">
+
+  
+  
+
+  <meta name="description" content="Colin Lightfoot&#39;s technical blog. I&#39;m sure he&#39;s up to something...">
+  <meta name="keywords" content="[Code Pentesting Interesting Research Other]">
+  <meta name="author" content="Colin Lightfoot">
+
+  
+  <meta name="generator" content="Hugo 0.51" />
+
+  
+  
+
+  
+  
+</head>
+<body>
+
+
+<header role="banner">
+<hgroup>
+  
+  <h1><a href="http://colinlightfoot.com/">Code &#43; Pentesting</a></h1>
+    <h2>Showing off the cool things I study.</h2>
+</hgroup></header>
+
+
+<nav role="navigation">
+<fieldset class="mobile-nav">
+  
+  <select onchange="location = this.value;">
+    <option value="">Navigate…</option>
+      
+        <option value="http://colinlightfoot.com/">» Blog</option>
+      
+        <option value="http://colinlightfoot.com/archive/">» Archive</option>
+      
+  </select>
+</fieldset>
+
+
+<ul class="main-navigation">
+  
+  
+    
+      <li><a href="http://colinlightfoot.com/" title="Blog">Blog</a></li>
+    
+  
+    
+      <li><a href="http://colinlightfoot.com/archive/" title="Archive"  target="_blank" >Archive</a></li>
+    
+  
+</ul>
+
+<ul class="subscription">
+  
+</ul>
+
+
+</nav>
+
+
+<div id="main">
+  <div id="content">
+    <div>
+      <article class="hentry" role="article">
+
+        
+        
+
+<header>
+  <p class="meta">Oct 20, 2019
+     - 5 minute read 
+     - <a href="http://colinlightfoot.com/blog/2019-10-20-microsoft-swe-interview-process/#disqus_thread">Comments</a>
+
+    
+    
+      - <a class="label" href="http://colinlightfoot.com/categories/cloud-development/">Cloud Development </a>
+    
+  </p>
+  <h1 class="entry-title">
+     Microsoft SWE Interview Process 
+  </h1>
+</header>
+
+
+        <div class="entry-content">
+          
+          
+          
+          <p>This post details my experiences during the interview process for a Software Engineering position in Microsoft&rsquo;s Azure Storage team.</p>
+
+<p>First off, since I already work for Microsoft, this was an internal interview process, so your mileage may vary. The end result of this process was that I was offered a position as an entry-level Software Engineer (SWE)- not bad considering I only have exactly 1-year of programming experience that does not constitute as consulting and Microsoft SWEs are no-joke, hardcore programmers in my opinion.</p>
+
+<p>I first reached out to the manager of the Azure Storage team because I heard they were local and developing my company&rsquo;s cloud would be something incredibly cool for me to do since this would benefit the world as a whole. The manager was incredibly cool and patient, and took me seriously: he immediately set up an interview for me with one of his senior developers to test my mettle.</p>
+
+<p>During the interview, I was asked, &ldquo;Given a string, find the longest substring in the string where the first and last characters are the same.&rdquo; Simple enough problem. I first found the worst solution so I had something to fall back to in case I could not find the most optimal solution. In the end, though, I was able to at least describe the most optimal solution since time had run out to finish coding it because we had a good discussion at the beginning of the interview. The optimal solution was to use a dictionary (or hashmap, but I interviewed using Python) and store the first and last positions of each character that appeared in the string; from there you subtract the last and first positions of each character to find the longest string, outputting the substring that would be the first alphabetically.</p>
+
+<p>After passing that interview, I was told the recruiter would reach out to me. A few months passed and I reached out to the manager to see what was going on. He was surprised the recruiter had not reached out, as he thought I had ghosted the whole interview process. He told me he&rsquo;d reach out to the interviewer again to set up the final round of interviews. After a few weeks and continuous prodding, he was finally able to get the recruiter to set up the last round.  really appreciated how much he went out of his way to get this whole interview process to occur - I am eternally grateful that the One Microsoft attitude really exists and I have always received help within the company whenever I have asked for it (and even when I haven&rsquo;t)!</p>
+
+<p>The final round consisted of four back-to-back technical interviews; needless to say, by the end of the day I was exasperated. The first interview asked me to reverse a number. I used Python trickery to get a quick solution, but of course he wanted it the traditional way because cheese is only fresh for a few days. I was able to get the remainders of each iteration, but I was stuck on how to add the remainders up. I thought you should store each of them in an array and then calculate the reverse number when the last remainder was computed, but he hinted that I only needed to add them to one integer and multiply the remainders to the result the opposite way I calculated them. We then discussed how you would prevent overflows if the numbers were too big, etc. I can&rsquo;t believed I needed that much help for suck a simple problem, but the next two interviews went a lot better.</p>
+
+<p>The second interviewer asked me to design a system that would allow for proper authentication measures given certain environmental conditions. After creating a sequence diagram and describing how the system would work, we discussed what working on her team would be like. I really appreciated her taking the time to discuss how my daily life on the team would be like and it made me really hope I passed the interview process.</p>
+
+<p>The third interviewer was the lead programmer, a really chill dude with a lot of patience. He first asked me to do what the senior programmer in the first round asked me to do, &ldquo;Given a string, find the longest substring in the string where the first and last characters are the same.&rdquo; I already told him that I was asked that problem and told him the solution, and he thanked me for my honesty. He then asked me to determine how to ensure that a string given only a sequence of open and closed brackets and parentheses was balanced. He then asked me another question that was on the same level of difficulty, both of which I answered in ways that satisfied him.</p>
+
+<p>The final interview was kind of hard, as it was remote and the first technical question was confusing after the first part was implemented. Needless to say, she understood my thought process after I wrote out example outputs and helped me find two bugs in my code after I confusingly added the two additional features she wanted me to add. She asked another question pertaining to what the algorithm would be to use the fewest possible moves to move objects into their sequential orders, which I found the least optimal solution for but did not have enough time to think of the optimal solution. She said I did well and appreciated how I provided examples to show which parts of the first question I was confused about.</p>
+
+<p>After the final interviewer, the manager thanked me and escorted back to our office&rsquo;s main lobby. Three days later, he told me that the team liked me and would be glad to have me if I were to take their offer. Overall, I was definitely satisfied with the interview process as a whole and I really appreciate the time and effort my coworkers put in to interview me.</p>
+        </div>
+        
+
+<footer>
+  <p class="meta">
+    <span class="byline author vcard">Posted by <span class="fn">Colin Lightfoot</span></span>
+    
+    <time>Oct 20, 2019</time>
+    
+      <span class="categories">
+        Tags:
+        
+          <a class="category" href="http://colinlightfoot.com/tags/azure-storage">Azure Storage</a>  
+    
+    </span>
+  </p>
+
+  
+
+  <p class="meta">
+    
+        <a class="basic-alignment left" href="http://colinlightfoot.com/blog/2019-10-15-automatic-carousel/" title="Automatic Carousel">Automatic Carousel</a>
+    
+
+    
+      <a class="basic-alignment right" href="http://colinlightfoot.com/blog/2019-10-20-georgia-tech-acceptance/" title="Georgia Tech Acceptance!">Georgia Tech Acceptance!</a>
+    
+  </p>
+  
+    
+  
+</footer>
+
+      </article>
+    </div>
+    
+
+<aside class="sidebar thirds">
+  <section class="first odd">
+
+    
+      <h1>About Me</h1>
+    
+
+    <p>
+      
+        I am a Microsoft Consultant by day and explorer by night, learning what I can about
+  software development and pentesting. </br>Sometimes I study for certifications, other times I attempt a
+  new project or try to solve a CTF challenge or coding problem. </br>Whatever I do, though, I&rsquo;ll try my best to share
+  it with you.
+      
+    </p>
+  </section>
+
+
+
+  
+  <ul class="sidebar-nav">
+    <li class="sidebar-nav-item">
+      <a target="_blank" href="https://github.com/hydure/" title="https://github.com/hydure/"><i class="fa fa-github fa-3x"></i></a>
+      
+      
+      <a target="_blank" href="https://twitter.com/hydure/" title="https://twitter.com/hydure/"><i class="fa fa-twitter fa-3x"></i></a>
+      
+         
+      
+      <a target="_blank" href="https://www.linkedin.com/in/colinflightfoot/" title="https://www.linkedin.com/in/colinflightfoot/"><i class="fa fa-linkedin fa-3x"></i></a>
+      <a target="_blank" href="https://stackoverflow.com/users/8271155/c-lightfoot" title="https://stackoverflow.com/users/8271155/c-lightfoot"><i class="fa fa-stack-overflow fa-3x"></i></a>
+      
+      <a target="_blank" href="https://www.facebook.com/colin.lightfoot.9" title="https://www.facebook.com/colin.lightfoot.9"><i class="fa fa-facebook fa-3x"></i></a>
+      
+      <a target="_blank" href="https://www.instagram.com/hydure" title="https://www.instagram.com/hydure"><i class="fa fa-instagram fa-3x"></i></a>
+      
+
+    
+    
+    </li>
+  </ul>
+
+  
+
+  
+
+  
+  
+  
+    
+      <section class="even">
+        <h1>Recent Posts</h1>
+        <ul id="recent_posts">
+          
+          
+            
+              <li class="post">
+                <a href="/blog/2019-10-20-georgia-tech-acceptance/">Georgia Tech Acceptance!</a>
+              </li>
+            
+          
+            
+              <li class="post">
+                <a href="/blog/2019-10-20-microsoft-swe-interview-process/">Microsoft SWE Interview Process</a>
+              </li>
+            
+          
+            
+              <li class="post">
+                <a href="/blog/2019-10-15-automatic-carousel/">Automatic Carousel</a>
+              </li>
+            
+          
+            
+              <li class="post">
+                <a href="/blog/2019-10-07-dailychallenges-1-2/">DailyChallenges 1 &amp; 2</a>
+              </li>
+            
+          
+            
+              <li class="post">
+                <a href="/blog/2019-09-29-reasons-for-sabbatical/">Reasons For Sabbatical</a>
+              </li>
+            
+          
+        </ul>
+      </section>
+    
+  
+</aside>
+
+  </div>
+</div>
+
+    <footer role="contentinfo">
+      <p>Copyright &copy; 2019 Colin Lightfoot - <a href="http://colinlightfoot.com/license/">License</a> -
+        <span class="credit">Powered by <a target="_blank" href="https://gohugo.io">Hugo</a> and <a target="_blank" href="https://github.com/parsiya/hugo-octopress/">Hugo-Octopress</a> theme.
+      </p>
+    </footer>
+
+    
+    
+    
+
+    
+      <script>
+        var _gaq=[['_setAccount','UA-148944050-1'],['_trackPageview']];
+        (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+        g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+        s.parentNode.insertBefore(g,s)}(document,'script'));
+      </script>
+    
+  </body>
+</html>
+

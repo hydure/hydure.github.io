@@ -3,6 +3,16 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://colinlightfoot.com/blog/2019-10-20-georgia-tech-acceptance/</loc>
+    <lastmod>2019-10-20T11:35:33-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://colinlightfoot.com/blog/2019-10-20-microsoft-swe-interview-process/</loc>
+    <lastmod>2019-10-20T10:56:03-04:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://colinlightfoot.com/blog/2019-10-15-automatic-carousel/</loc>
     <lastmod>2019-10-15T16:15:17-04:00</lastmod>
   </url>
@@ -84,6 +94,12 @@
   </url>
   
   <url>
+    <loc>http://colinlightfoot.com/tags/azure-storage/</loc>
+    <lastmod>2019-10-20T10:56:03-04:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://colinlightfoot.com/categories/bio/</loc>
     <lastmod>2018-11-25T20:06:08-05:00</lastmod>
     <priority>0</priority>
@@ -109,7 +125,7 @@
   
   <url>
     <loc>http://colinlightfoot.com/categories/cloud-development/</loc>
-    <lastmod>2019-09-29T10:54:28-04:00</lastmod>
+    <lastmod>2019-10-20T10:56:03-04:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -121,12 +137,18 @@
   
   <url>
     <loc>http://colinlightfoot.com/</loc>
-    <lastmod>2019-10-15T16:15:17-04:00</lastmod>
+    <lastmod>2019-10-20T11:35:33-04:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://colinlightfoot.com/content/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://colinlightfoot.com/categories/cybersecurity/</loc>
+    <lastmod>2019-10-20T11:35:33-04:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -139,6 +161,12 @@
   <url>
     <loc>http://colinlightfoot.com/categories/development/</loc>
     <lastmod>2019-03-18T19:57:32-04:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://colinlightfoot.com/categories/education/</loc>
+    <lastmod>2019-10-20T11:35:33-04:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -198,7 +226,7 @@
   
   <url>
     <loc>http://colinlightfoot.com/post/</loc>
-    <lastmod>2019-10-15T16:15:17-04:00</lastmod>
+    <lastmod>2019-10-20T11:35:33-04:00</lastmod>
     <priority>0</priority>
   </url>
   

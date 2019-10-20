@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Cybersecurity on Code &#43; Pentesting</title>
+    <link>http://colinlightfoot.com/categories/cybersecurity/</link>
+    <description>Recent content in Cybersecurity on Code &#43; Pentesting</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 20 Oct 2019 11:35:33 -0400</lastBuildDate>
+    
+	<atom:link href="http://colinlightfoot.com/categories/cybersecurity/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Georgia Tech Acceptance!</title>
+      <link>http://colinlightfoot.com/blog/2019-10-20-georgia-tech-acceptance/</link>
+      <pubDate>Sun, 20 Oct 2019 11:35:33 -0400</pubDate>
+      
+      <guid>http://colinlightfoot.com/blog/2019-10-20-georgia-tech-acceptance/</guid>
+      <description>&lt;p&gt;I just wanted to share with you guys the amazing news that I got into one of the best Computer Science schools in the world!&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
