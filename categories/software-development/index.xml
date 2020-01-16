@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Software Development on Code &#43; Pentesting</title>
+    <link>http://colinlightfoot.com/categories/software-development/</link>
+    <description>Recent content in Software Development on Code &#43; Pentesting</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 16 Jan 2020 16:55:12 -0500</lastBuildDate>
+    
+	<atom:link href="http://colinlightfoot.com/categories/software-development/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Setting Up PyQt &amp; QT Designer on MacOS</title>
+      <link>http://colinlightfoot.com/blog/2020-01-16-setting-up-pyqt-qt-designer-on-macos/</link>
+      <pubDate>Thu, 16 Jan 2020 16:55:12 -0500</pubDate>
+      
+      <guid>http://colinlightfoot.com/blog/2020-01-16-setting-up-pyqt-qt-designer-on-macos/</guid>
+      <description>&lt;p&gt;This article explains how to add some GUI to your Python code.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

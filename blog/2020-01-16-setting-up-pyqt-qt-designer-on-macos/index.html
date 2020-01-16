@@ -1,6 +1,3 @@
-
-
-
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
 <head>
@@ -22,7 +19,7 @@
   <script data-ad-client="ca-pub-4017802261362613" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
   
   
-  <title>Javascript</title>
+  <title>Setting Up PyQt &amp; QT Designer on MacOS</title>
 
   
   
@@ -39,7 +36,7 @@
   <link href="http://colinlightfoot.com/favicon.png" rel="icon">
 
   
-  <link href="http://colinlightfoot.com/tags/javascript/index.xml" rel="alternate" type="application/rss+xml" title="Code &#43; Pentesting" />
+  
 
   <meta name="description" content="Colin Lightfoot&#39;s technical blog. I&#39;m sure he&#39;s up to something...">
   <meta name="keywords" content="[Code Pentesting Interesting Research Other]">
@@ -103,47 +100,75 @@
 <div id="main">
   <div id="content">
     <div>
-      <article role="article">
-        <header>
-          <h1 class="entry-title">
-            Tag: Javascript
-          </h1>
-        </header>
-        <div id="blog-archives" class="category">
-          
-          <h2>
-            2019
-          </h2>
-          <article>
-            <h1>
-              <a href="http://colinlightfoot.com/blog/2019-10-15-automatic-carousel/" title="Automatic Carousel">Automatic Carousel</a>
-            </h1>
-            <time>
-              <span class="month">Oct</span>
-              <span class="day">15</span>
-            </time>
-            <footer>
-              <span class="categories"> 
-                
-                
-                posted in:
-                 <a class="category" href="http://colinlightfoot.com/categories/programming">Programming</a>
-              </br>
-                
+      <article class="hentry" role="article">
 
-                
-                
-                tags:
-                 <a class="category" href="http://colinlightfoot.com/tags/javascript">JavaScript</a> <a class="category" href="http://colinlightfoot.com/tags/html-css">HTML &amp; CSS</a>
-                
-              </span>
-            </footer>
-          </article>
+        
+        
+
+<header>
+  <p class="meta">Jan 16, 2020
+     - 2 minute read 
+     - <a href="http://colinlightfoot.com/blog/2020-01-16-setting-up-pyqt-qt-designer-on-macos/#disqus_thread">Comments</a>
+
+    
+    
+      - <a class="label" href="http://colinlightfoot.com/categories/software-development/">Software Development </a>
+    
+  </p>
+  <h1 class="entry-title">
+     Setting Up PyQt &amp; QT Designer on MacOS 
+  </h1>
+</header>
+
+
+        <div class="entry-content">
           
+          
+          
+          <p>This article explains how to add some GUI to your Python code.</p>
+
+<p>Us coders know how to run Python via the Terminal (Command Line if you&rsquo;re a Windows developer), but I highly doubt your nontechnical user audience wants to see anything remotely similar to a terminal. That&rsquo;s where graphical user interfaces (GUIs) come in. And, luckily for Python users, there exists an easy interface to create these GUIs.</p>
+
+<p>Since you&rsquo;re using a Mac, might as well install an amazing (and free) package manager for MacOS, <a href="https://brew.sh/" target="_blank">Homebrew</a>. All you have to do, like the website says, is type <code>/usr/bin/ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;</code> into your terminal and it&rsquo;ll install.</p>
+
+<p>Next you&rsquo;re going to want to install PyQt. In this example, we will be installing PyQt (the latest version). Simply type <code>brew install pyqt5</code> and it will install PyQt5 and all of its necessary dependencies. You make have to install or update Xcode. If so, first type <code>xcode-select --install</code>, then go <a href="https://developer.apple.com/download/more/" target="_blank">here</a> and install the latest Xcode version (at the time of writing this, Xcode was on version 11.3). Once that finishes installing, close your terminal if you haven&rsquo;t already and open up a new termina before typing in <code>brew install pyqt5</code> and having it finally run successfully.</p>
+
+<p>Now you want to <a href="https://build-system.fman.io/qt-designer-download" target="_blank">install Qt Designer</a>, not Qt Creator, as Qt Creator has a bunch of unnecessary things whereas Qt Designer is only 40 MB.</p>
+
+<p>If anyone wants me to, I can create another blog post explaining how to create a basic PyQt5 app, but there are numerous sites that already show you how (also, I&rsquo;d be getting most of my information from them myself as I haven&rsquo;t used PyQt5 in a few years).</p>
         </div>
+        
+
+<footer>
+  <p class="meta">
+    <span class="byline author vcard">Posted by <span class="fn">Colin Lightfoot</span></span>
+    
+    <time>Jan 16, 2020</time>
+    
+      <span class="categories">
+        Tags:
+        
+          <a class="category" href="http://colinlightfoot.com/tags/python">Python</a>  
+    
+    </span>
+  </p>
+
+  
+
+  <p class="meta">
+    
+        <a class="basic-alignment left" href="http://colinlightfoot.com/blog/2019-10-20-georgia-tech-acceptance/" title="Georgia Tech Acceptance!">Georgia Tech Acceptance!</a>
+    
+
+    
+  </p>
+  
+    
+  
+</footer>
+
       </article>
     </div>
-
     
 
 <aside class="sidebar thirds">
